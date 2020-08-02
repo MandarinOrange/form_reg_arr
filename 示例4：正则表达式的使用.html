@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        //验证字符串是否包含abc
+        /*var reg = /abc/;//创建正则表达式
+        var str = "sdfsdfabcdfdf";
+        var result = reg.test(str);
+        document.write(result);*/
+
+        //验证是否包含abc，忽略大小写
+        /*var reg = /abc/i;//创建正则表达式   i表示忽略大小写
+        var str = "sdfsdfaBcdfdf";
+        var result = reg.test(str);
+        document.write(result);*/
+
+        //验证是否以abc开头
+        /*var reg = /^abc/;//创建正则表达式   ^表示开头
+        var str = "abcdfdf";
+        var result = reg.test(str);
+        document.write(result);*/
+
+        //验证是否以abc结尾
+        /*var reg = /abc$/i;//创建正则表达式   $表示结尾
+        var str = "sdfsdfabc";
+        var result = reg.test(str);
+        document.write(result);*/
+
+        //exec()方法的使用
+        var reg = /a/g;
+        var str = "dsadfadaffd";
+        var result = reg.exec(str);
+        //lastIndex用于获取下次匹配的开始索引(注意：附件参数要用g，否则lastIndex持续为0)
+        document.write(result+"-"+reg.lastIndex);
+        result = reg.exec(str);
+        document.write(result+"-"+reg.lastIndex);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var arr = new Array();
+        arr["hn"] = ["长沙","株洲","湘潭"];
+        arr["gd"] = ["广州","深圳","东莞"];
+
+        function addCity(){
+            //获取选中省份的值
+            var pro = document.getElementById("selPro").value;
+            var citys = arr[pro];
+            //先清空城市下拉列表的选项
+            document.getElementById("selCity").length = 0;
+            for(var i=0;i<citys.length;i++){
+                var c = citys[i];
+                var op = new Option(c,c);
+                document.getElementById("selCity").options.add(op);
+            }
+        }
+
+        window.onload = addCity;
+    </script>
+</head>
+<body>
+    省份：<select id="selPro" onchange="addCity()">
+        <option value="hn">湖南</option>
+        <option value="gd">广东</option>
+    </select><br>
+    城市：<select id="selCity">
+
+    </select>
+</body>
+</html>

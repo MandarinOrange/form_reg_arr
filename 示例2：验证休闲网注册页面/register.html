@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+    <title>休闲网注册页面</title>
+    <link href="login.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        /*需求：
+            邮箱：不能为空、必须包含@、必须包含. 最后一个.必须在@符号后面并且中间要有字符   a.bc@qq.com
+            密码：不能为空、必须大于等于6位
+            确认密码：二次密码要一致
+            姓名：不能为空、不能包含数字    张三123  charAt(i)
+         */
+        //验证邮箱
+        function checkEmail(){
+            var email = document.getElementById("email").value;//获取邮箱文本框中的字符串
+            if(email.length == 0){
+                alert("email不能为空！");
+                return false;
+            }else if(email.indexOf("@")<0){
+                alert("email中必须包含@符号！");
+                return false;
+            }else if(email.indexOf(".")<0){
+                alert("email中必须包含.符号！");
+                return false;
+            }else if(email.lastIndexOf(".")-email.indexOf("@")<=1){
+                alert("最后一个.必须在@符号后面并且中间要有字符");
+                return false;
+            }
+            return true;
+        }
+        //验证密码
+        function checkPwd(){
+            var pwd = document.getElementById("pwd").value;//获取密码文本框的值
+            if(pwd.length == 0){
+                alert("密码不能为空！");
+                return false;
+            }else if(pwd.length<6){
+                alert("密码必须大于等于6位！");
+                return false;
+            }
+            return true;
+        }
+        //验证确认密码
+        function checkConfirmPwd(){
+            var pwd = document.getElementById("pwd").value;//密码
+            var confirmPwd = document.getElementById("repwd").value;//确认密码
+            if(pwd!=confirmPwd){
+                alert("二次输入密码不一致！");
+                return false;
+            }
+            return true;
+        }
+        //验证姓名
+        function checkName(){
+            var name = document.getElementById("user").value;//获取姓名文本框中的值
+            if(name.length == 0){
+                alert("姓名不能为空！");
+                return false;
+            }else{
+                for(var i=0;i<name.length;i++){
+                    var s = name.charAt(i);
+                    if(!isNaN(s)){
+                        alert("用户名不能包含数字！");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        //表单验证函数
+        function checkForm(){
+            if(checkEmail()&&checkPwd()&&checkConfirmPwd()&&checkName()){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+<div id="header" class="main">
+    <div id="headerLeft"><img src="images/logo.gif"/></div>
+    <div id="headerRight">注册 | 登录 | 帮助</div>
+</div>
+<div class="main">
+    <table id="center" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="bold" colspan="2">注册休闲网</td>
+        </tr>
+        <form action="success.html" method="post" name="myform" onsubmit="return checkForm()">
+            <tr>
+                <td class="left">您的Email：</td>
+                <td><input id="email" type="text" class="inputs"/></td>
+            </tr>
+            <tr>
+                <td class="left">输入密码：</td>
+                <td><input id="pwd" type="password" class="inputs"/></td>
+            </tr>
+            <tr>
+                <td class="left">再输入一遍密码：</td>
+                <td><input id="repwd" type="password" class="inputs"/></td>
+            </tr>
+            <tr>
+                <td class="left">您的姓名：</td>
+                <td><input id="user" type="text" class="inputs"/></td>
+            </tr>
+            <tr>
+                <td class="left">性别：</td>
+                <td><input name="sex" type="radio" value="1"/> 男
+                    <input name="sex" type="radio" value="0"/> 女
+                </td>
+            </tr>
+            <tr>
+                <td class="left">出生日期：</td>
+                <td><select name="year">
+                    <script type="text/javascript">
+                        for (var i = 1900; i <= 2009; i++) {
+                            document.write("<option value=" + i + ">" + i + "</option>");
+                        }
+                    </script>
+                </select>年
+                    <select name="month">
+                        <script type="text/javascript">
+                            for (var i = 1; i <= 12; i++) {
+                                document.write("<option value=" + i + ">" + i + "</option>");
+                            }
+                        </script>
+                    </select>月
+                    <select name="day">
+                        <script type="text/javascript">
+                            for (var i = 1; i <= 31; i++) {
+                                document.write("<option value=" + i + ">" + i + "</option>");
+                            }
+                        </script>
+                    </select>日
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input name="btn" type="submit" value="注册" class="rb1"/></td>
+            </tr>
+        </form>
+    </table>
+
+</div>
+<div id="footer" class="main"><a href="#">关于我们</a> | <a href="#">诚聘英才</a> |<a href="#"> 联系方式</a> | <a href="#">帮助中心</a>
+</div>
+</body>
+</html>

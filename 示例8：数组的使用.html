@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var arr = new Array();
+        arr[0] = "张三";
+        arr[1] = 23;
+        arr["one"] = 25.6;
+        document.write(arr[1]+"<br>");
+        document.write(arr["one"]+"<br>");
+
+        document.write("================数组遍历===============<br>");
+        //数组循环(方法一：普通循环)
+        for(var i=0;i<arr.length;i++){
+            document.write(arr[i]+"<br>");
+        }
+        //数组循环(方法二：增强型for循环  注意：遍历出来的不是元素，而是下标)
+        for(var i in arr){
+            document.write(arr[i]+"<br>");
+        }
+
+
+        var arr2 = new Array();
+        arr2["hn"] = ["长沙","株洲","湘潭"];
+        document.write(arr2["hn"][1]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

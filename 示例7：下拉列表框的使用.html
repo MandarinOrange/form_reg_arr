@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        function addOption(){
+            var op = new Option("广东","gd");//参数一：显示的文本   参数二：值
+            var sel = document.getElementById("selPro");//获取下拉列表框
+            sel.options.add(op);//将创建的选项添加到下拉列表框中
+        }
+
+        function showOption(){
+            var sel = document.getElementById("selPro");//获取下拉列表框
+            var v = sel.value;//获取选中的值
+            var index = sel.selectedIndex;//获取选中项的缩影
+            alert(v+"-"+index);
+        }
+    </script>
+</head>
+<body>
+<select id="selPro" onchange="showOption()">
+    <option value="hn">湖南</option>
+    <option value="hb">湖北</option>
+</select>
+<input type="button" value="添加一个option" onclick="addOption()" />
+</body>
+</html>
